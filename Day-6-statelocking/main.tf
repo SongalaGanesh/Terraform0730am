@@ -12,3 +12,13 @@ resource "aws_subnet" "dev_1" {
     Name = "tf-State-locking-subnet"
   }
 }
+
+resource "aws_instance" "dev_2" {
+  ami           = "ami-02dfbd4ff395f2a1b"
+  instance_type = "t2.micro"
+  subnet_id     = aws_subnet.dev_1.id
+  tags = {
+    Name = "resource-instance"
+  }
+  
+}
